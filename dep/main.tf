@@ -10,6 +10,5 @@ resource "aws_instance" "db" {
 resource "aws_instance" "web" {
     ami = "ami-032598fcc7e9d1c7a"
     instance_type = "t2.micro"
-
     depends_on = [aws_instance.db]
 }
