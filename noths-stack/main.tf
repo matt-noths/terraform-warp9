@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = var.region
 }
 
 
@@ -123,3 +123,18 @@ resource "aws_s3_bucket_policy" "website" {
     ]
   })
 }
+
+resource "aws_api_gateway_deployment" "hello_world_deployment" {
+  rest_api_id = aws_api_gateway_rest_api.hello_world_api.id
+  stage_name  = "qa"
+}
+
+output "lambda_function_url" {
+  value = "https://${aws_api_gateway_rest_api.hello_world_api.id}.execute-api.${var.region}.amazonaws.com/${aws_api_gateway_deployment.hello_world_deployment.stage_name}/hello-world"
+}
+
+# output "lambda_function_url_2" {
+#   description = "The URL of the Lambda function"
+#   # value       = aws_lambda_function_url.function.function_url
+#   value = aws_lambda_function.hello_world.
+# }
