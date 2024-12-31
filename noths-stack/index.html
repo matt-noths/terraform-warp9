@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Counter</title>
+</head>
+<body>
+<h1>Hello World Counter</h1>
+<p>Total visits: <span id="count">Loading...</span></p>
+
+<script>
+    fetch('https://YOUR_API_GATEWAY_URL/hello-world')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('count').textContent = data.count;
+        });
+</script>
+</body>
+</html>

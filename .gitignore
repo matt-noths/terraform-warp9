@@ -1,3 +1,5 @@
 backup
+build
 node_modules
 .terraform
+/noths-stack/lambda.js
