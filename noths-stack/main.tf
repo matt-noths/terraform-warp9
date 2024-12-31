@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.54.1"
+      version = "5.82.2"
     }
   }
 }
@@ -18,8 +18,8 @@ resource "aws_lambda_function" "hello_world" {
   function_name = "hello-world-function"
   role          = aws_iam_role.lambda_role.arn
   handler       = "index.handler"
-  runtime       = "nodejs14.x"
-  source_code_hash = filebase64sha256("lambda.zip")
+  runtime       = "nodejs22.x"
+  source_code_hash = filebase64sha256("./build/lambda.zip")
 }
 
 # IAM Role for Lambda

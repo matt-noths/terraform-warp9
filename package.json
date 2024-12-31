@@ -4,7 +4,9 @@
   "description": "Noodling about with Terraform",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf ./build && esbuild ./noths-stack/lambda.ts --bundle --minify --platform=node --outfile=./build/lambda.js --external:aws-sdk",
+    "clean": "rimraf ./build ./noths-stack/build",
+    "build": "npm run clean && esbuild ./noths-stack/lambda.ts --bundle --minify --platform=node --outfile=./noths-stack/build/lambda.js --external:aws-sdk && zip -j ./noths-stack/build/lambda.zip ./noths-stack/build/lambda.js",
+    "_build": "rimraf ./build && esbuild ./noths-stack/lambda.ts --bundle --minify --platform=node --outfile=./build/lambda.js --external:aws-sdk",
     "test": "echo \"Error: no test specified\" && exit 1",
     "types": "tsc"
   },
