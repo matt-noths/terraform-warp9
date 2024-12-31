@@ -11,7 +11,4 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-# module "env" {
-#   source  = "app.terraform.io/notonthehighstreet/noths-env-vars/module"
-#   version = "~> 1.5"
-# }
+
